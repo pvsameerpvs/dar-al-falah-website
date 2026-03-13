@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -17,6 +18,18 @@ import HandymanRoundedIcon from '@mui/icons-material/Handyman';
 import StorefrontRoundedIcon from '@mui/icons-material/StorefrontRounded';
 
 export default function HeroSection() {
+  const [scrollRotation, setScrollRotation] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Negative multiplier ensures it rotates anti-clockwise when scrolling down
+      setScrollRotation(-window.scrollY * 0.15);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <Box
       component="section"
@@ -33,90 +46,93 @@ export default function HeroSection() {
         justifyContent: 'center'
       }}
     >
-      {/* CONCENTRIC CIRCLES BACKGROUND */}
+      {/* ROTATING BACKGROUND GLOBE */}
       <Box
         sx={{
           position: 'absolute',
           top: '50%',
           left: '50%',
-          transform: 'translate(-50%, -50%)',
+          transform: `translate(-50%, -50%) rotate(${scrollRotation}deg)`,
           width: { xs: 800, md: 1000 },
           height: { xs: 800, md: 1000 },
-          borderRadius: '50%',
-          border: '1px dashed rgba(229,57,53,0.15)',
           zIndex: 0,
-          pointerEvents: 'none'
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: { xs: 500, md: 680 },
-          height: { xs: 500, md: 680 },
-          borderRadius: '50%',
-          border: { xs: '30px solid rgba(229,57,53,0.04)', md: '50px solid rgba(229,57,53,0.04)' },
-          zIndex: 0,
-          pointerEvents: 'none'
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: { xs: 300, md: 400 },
-          height: { xs: 300, md: 400 },
-          borderRadius: '50%',
-          backgroundColor: '#FFFFFF',
-          boxShadow: '0 0 80px rgba(229,57,53,0.06)',
-          zIndex: 0,
-          pointerEvents: 'none'
-        }}
-      />
-
-      {/* FLOATING ICONS (Decoration) */}
-      <Box
-        sx={{
-          position: 'absolute',
-          left: { xs: '5%', md: '18%' },
-          top: { xs: '25%', md: '25%' },
-          width: { xs: 45, md: 60 },
-          height: { xs: 45, md: 60 },
-          borderRadius: '50%',
-          bgcolor: '#ffffff',
-          border: '2px solid rgba(229,57,53,0.2)',
+          pointerEvents: 'none',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 2,
-          boxShadow: '0 8px 20px rgba(229,57,53,0.1)'
+          justifyContent: 'center'
         }}
       >
-        <ArchitectureRoundedIcon sx={{ color: '#E53935', fontSize: { xs: 20, md: 28 } }} />
-      </Box>
+        {/* Outer dashed circle */}
+        <Box
+          sx={{
+            position: 'absolute',
+            inset: 0,
+            borderRadius: '50%',
+            border: '1px dashed rgba(229,57,53,0.15)'
+          }}
+        />
+        {/* Middle solid border circle */}
+        <Box
+          sx={{
+            position: 'absolute',
+            width: { xs: 500, md: 680 },
+            height: { xs: 500, md: 680 },
+            borderRadius: '50%',
+            border: { xs: '30px solid rgba(229,57,53,0.04)', md: '50px solid rgba(229,57,53,0.04)' }
+          }}
+        />
+        {/* Inner white circle */}
+        <Box
+          sx={{
+            position: 'absolute',
+            width: { xs: 300, md: 400 },
+            height: { xs: 300, md: 400 },
+            borderRadius: '50%',
+            backgroundColor: '#FFFFFF',
+            boxShadow: '0 0 80px rgba(229,57,53,0.06)'
+          }}
+        />
 
-      <Box
-        sx={{
-          position: 'absolute',
-          right: { xs: '5%', md: '16%' },
-          top: { xs: '45%', md: '38%' },
-          width: { xs: 55, md: 70 },
-          height: { xs: 55, md: 70 },
-          borderRadius: '50%',
-          bgcolor: '#ffffff',
-          border: '2px solid rgba(255,111,96,0.3)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 2,
-          boxShadow: '0 8px 24px rgba(255,111,96,0.15)'
-        }}
-      >
-        <CategoryRoundedIcon sx={{ color: '#FF6F60', fontSize: { xs: 24, md: 32 } }} />
+        {/* ORBITING ICONS */}
+        <Box
+          sx={{
+            position: 'absolute',
+            left: { xs: '10%', md: '15%' },
+            top: { xs: '20%', md: '25%' },
+            transform: `rotate(${-scrollRotation}deg)`,
+            width: { xs: 45, md: 60 },
+            height: { xs: 45, md: 60 },
+            borderRadius: '50%',
+            bgcolor: '#ffffff',
+            border: '2px solid rgba(229,57,53,0.2)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 8px 20px rgba(229,57,53,0.1)'
+          }}
+        >
+          <ArchitectureRoundedIcon sx={{ color: '#E53935', fontSize: { xs: 20, md: 28 } }} />
+        </Box>
+
+        <Box
+          sx={{
+            position: 'absolute',
+            right: { xs: '12%', md: '18%' },
+            bottom: { xs: '25%', md: '30%' },
+            transform: `rotate(${-scrollRotation}deg)`,
+            width: { xs: 55, md: 70 },
+            height: { xs: 55, md: 70 },
+            borderRadius: '50%',
+            bgcolor: '#ffffff',
+            border: '2px solid rgba(255,111,96,0.3)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 8px 24px rgba(255,111,96,0.15)'
+          }}
+        >
+          <CategoryRoundedIcon sx={{ color: '#FF6F60', fontSize: { xs: 24, md: 32 } }} />
+        </Box>
       </Box>
 
       {/* LEFT SIDE IMAGE */}
