@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import ArrowOutwardRoundedIcon from '@mui/icons-material/ArrowOutwardRounded';
 import CallRoundedIcon from '@mui/icons-material/CallRounded';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
@@ -64,19 +65,15 @@ export default function Footer() {
         <Grid container spacing={{ xs: 4, md: 5 }}>
           <Grid size={{ xs: 12, md: 4.5 }}>
             <Stack spacing={2.2}>
-              <Chip
-                label="Dar Al Falah"
-                variant="outlined"
-                sx={{
-                  alignSelf: 'flex-start',
-                  color: '#fff',
-                  borderColor: 'rgba(255,255,255,0.28)',
-                  bgcolor: 'rgba(255,255,255,0.06)',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  fontWeight: 700
-                }}
-              />
+              <Box sx={{ mb: 1 }}>
+                <Image
+                  src="/logo-1.png"
+                  alt="Dar Al Falah Logo"
+                  width={200}
+                  height={80}
+                  style={{ objectFit: 'contain' }}
+                />
+              </Box>
               <Typography
                 variant="h3"
                 sx={{

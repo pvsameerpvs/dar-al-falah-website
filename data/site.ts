@@ -40,35 +40,35 @@ export const categories: Category[] = [
     title: 'Sanitary Ware',
     description: 'Modern, durable fittings and essentials selected for functionality, hygiene, and everyday use.',
     icon: SanitizerRoundedIcon,
-    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
+    image: '/sanitary-ware.png',
     details: 'Our sanitary ware collection includes everything from modern bathroom sinks and elegant faucets to luxury bathtubs and shower sets. We provide high-quality, durable components designed to enhance both the aesthetics and functionality of your space.'
   },
   {
     title: 'Ceramic Tiles',
     description: 'Wall and floor tile options that balance clean design, durability, and easy maintenance.',
     icon: GridViewRoundedIcon,
-    image: 'https://images.unsplash.com/photo-1521789498177-832145325852?auto=format&fit=crop&w=800&q=80',
+    image: '/ceramic-tiles.jpg',
     details: 'Explore our wide selection of ceramic tiles ideal for living rooms, kitchens, bathrooms, and outdoor areas. Our tiles are highly durable, easy to clean, and come in various styles to match your design vision perfectly.'
   },
   {
     title: 'Building Material',
     description: 'Core material support for fit-out work, maintenance requirements, and ongoing site demand.',
     icon: StorefrontRoundedIcon,
-    image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80',
+    image: '/building-material.png',
     details: 'We supply essential building materials including cement, concrete, blocks, steel reinforcements, and insulation materials. Whether it is a small renovation or a large commercial project, we ensure timely delivery of quality construction supplies.'
   },
   {
     title: 'Plumbing Items',
     description: 'Reliable plumbing accessories and utility products for repair, replacement, and installation.',
     icon: PlumbingRoundedIcon,
-    image: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=800&q=80',
+    image: '/plumbingitems.png',
     details: 'From PVC pipes and fittings to water heaters, valves, and drainage systems, our plumbing selection is comprehensive. We supply reliable, standardized plumbing items to ensure leak-free and robust piping solutions for any property.'
   },
   {
     title: 'Hardware',
     description: 'Practical hardware solutions for daily site needs, finishing tasks, and maintenance work.',
     icon: HardwareRoundedIcon,
-    image: 'https://images.unsplash.com/photo-1581427386053-066cb1e8b15d?auto=format&fit=crop&w=800&q=80',
+    image: '/Hardware.png',
     details: 'Our hardware collection answers daily site needs with a robust range of hand tools, power tools, fasteners, screws, locks, and safety equipment. Built for durability, these tools ensure tasks are completed efficiently and safely.'
   }
 ];

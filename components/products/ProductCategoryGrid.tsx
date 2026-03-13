@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Chip from '@mui/material/Chip';
@@ -29,16 +28,13 @@ const imagePanelSx = {
 } as const;
 
 export default function ProductCategoryGrid() {
-  const [open, setOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
 
   const handleOpen = (category: Category) => {
     setSelectedCategory(category);
-    setOpen(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
     setSelectedCategory(null);
   };
 
@@ -78,9 +74,24 @@ export default function ProductCategoryGrid() {
                     }
                   }}
                 >
-                  <CardActionArea
+                  <Box
+                    component="button"
+                    type="button"
                     onClick={() => handleOpen(category)}
-                    sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
+                    sx={{
+                      height: '100%',
+                      width: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'flex-start',
+                      p: 0,
+                      m: 0,
+                      border: 0,
+                      background: 'transparent',
+                      textAlign: 'left',
+                      cursor: 'pointer',
+                      font: 'inherit'
+                    }}
                   >
                     <Box sx={{ position: 'relative', width: '100%' }}>
                       <CardMedia component="img" image={category.image} alt={category.title} sx={imagePanelSx} />
@@ -134,7 +145,7 @@ export default function ProductCategoryGrid() {
                         <ArrowOutwardRoundedIcon sx={{ color: '#E53935', fontSize: 18 }} />
                       </Stack>
                     </CardContent>
-                  </CardActionArea>
+                  </Box>
                 </Card>
               </Grid>
             );
@@ -144,7 +155,7 @@ export default function ProductCategoryGrid() {
 
       {/* Category Details Dialog */}
       <Dialog
-        open={open}
+        open={Boolean(selectedCategory)}
         onClose={handleClose}
         maxWidth="sm"
         fullWidth
