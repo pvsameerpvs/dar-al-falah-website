@@ -1,9 +1,11 @@
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 import ProductCategoryGrid from '@/components/products/ProductCategoryGrid';
 import { categories } from '@/data/site';
 
@@ -22,8 +24,8 @@ export default function ProductsPage() {
       >
         <Container maxWidth="lg">
           <Grid container spacing={{ xs: 4, md: 6 }} alignItems="stretch">
-            <Grid size={{ xs: 12, md: 7 }}>
-              <Stack spacing={2.2}>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Stack spacing={2.4} justifyContent="center" sx={{ height: '100%' }}>
                 <Chip
                   label="Our Products"
                   variant="outlined"
@@ -32,77 +34,188 @@ export default function ProductsPage() {
                     color: accent,
                     borderColor: 'rgba(229,57,53,0.3)',
                     fontWeight: 700,
-                    letterSpacing: '0.08em',
+                    letterSpacing: '0.06em',
+                    fontSize: '0.72rem',
                     textTransform: 'uppercase'
                   }}
                 />
                 <Typography
                   variant="h1"
                   sx={{
-                    fontSize: { xs: '2.4rem', md: '4.4rem' },
-                    lineHeight: 0.95,
+                    fontSize: { xs: '1.9rem', md: '3.2rem' },
+                    lineHeight: 1,
                     textTransform: 'uppercase',
-                    maxWidth: 820
+                    maxWidth: 620
                   }}
                 >
-                  Product categories presented with a cleaner red and white showroom feel.
+                  A sharper product showroom with better image presentation.
                 </Typography>
                 <Typography
                   sx={{
-                    maxWidth: 760,
+                    maxWidth: 580,
                     color: 'rgba(17,17,17,0.7)',
-                    fontSize: { xs: '1rem', md: '1.08rem' },
-                    lineHeight: 1.8
+                    fontSize: { xs: '0.92rem', md: '0.98rem' },
+                    lineHeight: 1.65
                   }}
                 >
                   Explore Dar Al Falah&apos;s main supply categories for sanitary ware, ceramic tiles, building
                   material, plumbing items, and hardware. Each card opens a focused product view for quick enquiry.
                 </Typography>
+                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+                  <Button
+                    component={Link}
+                    href="/contact"
+                    variant="contained"
+                    sx={{
+                      bgcolor: accent,
+                      color: '#fff',
+                      px: 3.5,
+                      py: 1.4,
+                      fontWeight: 700,
+                      '&:hover': {
+                        bgcolor: '#c62828'
+                      }
+                    }}
+                  >
+                    Request Product Inquiry
+                  </Button>
+                 
+                </Stack>
               </Stack>
             </Grid>
 
-            <Grid size={{ xs: 12, md: 5 }}>
+            <Grid size={{ xs: 12, md: 6 }}>
               <Box
                 sx={{
-                  height: '100%',
-                  p: { xs: 3, md: 4 },
-                  borderRadius: 0,
-                  background: 'linear-gradient(135deg, #111 0%, #e53935 100%)',
-                  color: '#fff',
-                  boxShadow: '0 24px 60px rgba(229,57,53,0.18)'
+                  position: 'relative',
+                  minHeight: { xs: 460, md: 560 },
+                  p: { xs: 2, md: 2.5 },
+                  borderRadius: 4,
+                  background: 'linear-gradient(135deg, #ffffff 0%, #ffe7e7 100%)',
+                  border: '1px solid rgba(229,57,53,0.2)',
+                  boxShadow: '0 28px 70px rgba(229,57,53,0.16)'
                 }}
               >
-                <Stack spacing={2.5}>
-                  <Typography
-                    variant="overline"
-                    sx={{ letterSpacing: '0.16em', color: 'rgba(255,255,255,0.74)', textTransform: 'uppercase' }}
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    top: 18,
+                    left: 18,
+                    px: 1.4,
+                    py: 1,
+                    bgcolor: accent,
+                    color: '#fff',
+                    fontWeight: 700,
+                    fontSize: '0.72rem',
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    zIndex: 2
+                  }}
+                >
+                  Product Focus
+                </Box>
+                <Box
+                  sx={{
+                    display: 'grid',
+                    gridTemplateColumns: { xs: '1fr', sm: '1.2fr 0.8fr' },
+                    gap: 2,
+                    height: '100%'
+                  }}
+                >
+                  <Box
+                    sx={{
+                      position: 'relative',
+                      minHeight: { xs: 240, md: '100%' },
+                      overflow: 'hidden',
+                      borderRadius: 4,
+                      bgcolor: '#fff'
+                    }}
                   >
-                    Product focus
-                  </Typography>
-                  <Typography variant="h4" sx={{ lineHeight: 1.12 }}>
-                    Structured selection for trade counters, project supply, and renovation demand.
-                  </Typography>
+                    <Box
+                      component="img"
+                      src={categories[0].image}
+                      alt={categories[0].title}
+                      sx={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: 'center',
+                        display: 'block'
+                      }}
+                    />
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.52))'
+                      }}
+                    />
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        left: 18,
+                        bottom: 18,
+                        color: '#fff'
+                      }}
+                    >
+                      <Typography sx={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'rgba(255,255,255,0.72)' }}>
+                        Main Range
+                      </Typography>
+                      <Typography variant="h5">{categories[0].title}</Typography>
+                    </Box>
+                  </Box>
+
                   <Box
                     sx={{
                       display: 'grid',
-                      gridTemplateColumns: { xs: '1fr 1fr', sm: 'repeat(3, 1fr)' },
-                      gap: 1.2
+                      gridTemplateRows: '1fr 1fr',
+                      gap: 2
                     }}
                   >
-                    <Box sx={{ p: 1.8, borderRadius: 0, bgcolor: 'rgba(255,255,255,0.08)' }}>
-                      <Typography sx={{ fontSize: '1.6rem', fontWeight: 800 }}>{categories.length}</Typography>
-                      <Typography sx={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.88rem' }}>Core ranges</Typography>
-                    </Box>
-                    <Box sx={{ p: 1.8, borderRadius: 0, bgcolor: 'rgba(255,255,255,0.08)' }}>
-                      <Typography sx={{ fontSize: '1.6rem', fontWeight: 800 }}>Red</Typography>
-                      <Typography sx={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.88rem' }}>Brand-led theme</Typography>
-                    </Box>
-                    <Box sx={{ p: 1.8, borderRadius: 0, bgcolor: 'rgba(255,255,255,0.08)' }}>
-                      <Typography sx={{ fontSize: '1.6rem', fontWeight: 800 }}>Fast</Typography>
-                      <Typography sx={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.88rem' }}>Inquiry flow</Typography>
-                    </Box>
+                    {[categories[1], categories[3]].map((category) => (
+                      <Box
+                        key={category.title}
+                        sx={{
+                          position: 'relative',
+                          minHeight: 170,
+                          overflow: 'hidden',
+                          borderRadius: 4,
+                          bgcolor: '#fff'
+                        }}
+                      >
+                        <Box
+                          component="img"
+                          src={category.image}
+                          alt={category.title}
+                          sx={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            objectPosition: 'center',
+                            display: 'block'
+                          }}
+                        />
+                        <Box
+                          sx={{
+                            position: 'absolute',
+                            inset: 0,
+                            background: 'linear-gradient(180deg, rgba(229,57,53,0.02), rgba(0,0,0,0.58))'
+                          }}
+                        />
+                        <Box
+                          sx={{
+                            position: 'absolute',
+                            left: 14,
+                            bottom: 14,
+                            color: '#fff'
+                          }}
+                        >
+                          <Typography sx={{ fontSize: '1rem', fontWeight: 700 }}>{category.title}</Typography>
+                        </Box>
+                      </Box>
+                    ))}
                   </Box>
-                </Stack>
+                </Box>
               </Box>
             </Grid>
           </Grid>

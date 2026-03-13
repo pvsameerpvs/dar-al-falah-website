@@ -20,6 +20,14 @@ import ArrowOutwardRoundedIcon from '@mui/icons-material/ArrowOutwardRounded';
 import CloseIcon from '@mui/icons-material/Close';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
+const imagePanelSx = {
+  width: '100%',
+  height: 240,
+  objectFit: 'cover',
+  objectPosition: 'center',
+  display: 'block'
+} as const;
+
 export default function ProductCategoryGrid() {
   const [open, setOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
@@ -57,7 +65,7 @@ export default function ProductCategoryGrid() {
                 <Card
                   sx={{
                     height: '100%',
-                    borderRadius: 0,
+                    borderRadius: 4,
                     display: 'flex',
                     flexDirection: 'column',
                     overflow: 'hidden',
@@ -75,7 +83,7 @@ export default function ProductCategoryGrid() {
                     sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
                   >
                     <Box sx={{ position: 'relative', width: '100%' }}>
-                      <CardMedia component="img" height="240" image={category.image} alt={category.title} />
+                      <CardMedia component="img" image={category.image} alt={category.title} sx={imagePanelSx} />
                       <Box
                         sx={{
                           position: 'absolute',
@@ -104,7 +112,7 @@ export default function ProductCategoryGrid() {
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            borderRadius: 0,
+                            borderRadius: 4,
                             backgroundColor: 'rgba(229,57,53,0.1)',
                             color: '#E53935',
                             flexShrink: 0
@@ -142,7 +150,7 @@ export default function ProductCategoryGrid() {
         fullWidth
         PaperProps={{
           sx: {
-            borderRadius: 0,
+            borderRadius: 4,
             overflow: 'hidden'
           }
         }}
@@ -189,7 +197,7 @@ export default function ProductCategoryGrid() {
                   width: '100%',
                   height: 350,
                   objectFit: 'cover',
-                  borderRadius: 0
+                  borderRadius: 4
                 }}
               />
               <Box>
@@ -211,7 +219,7 @@ export default function ProductCategoryGrid() {
                   '&:hover': {
                     backgroundColor: '#c62828'
                   },
-                  borderRadius: 0,
+                  borderRadius: 4,
                   textTransform: 'none',
                   fontSize: '1rem',
                   fontWeight: 700,

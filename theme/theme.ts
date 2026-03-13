@@ -26,7 +26,7 @@ const theme = createTheme({
     }
   },
   shape: {
-    borderRadius: 0
+    borderRadius: 4
   },
   typography: {
     fontFamily: 'var(--font-roboto)',
@@ -50,7 +50,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 4,
           paddingInline: '1.2rem'
         }
       }
@@ -58,14 +58,14 @@ const theme = createTheme({
     MuiChip: {
       styleOverrides: {
         root: {
-          borderRadius: 0
+          borderRadius: 4
         }
       }
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 4,
           boxShadow: '0 16px 42px rgba(30, 96, 61, 0.12)'
         }
       }
@@ -73,7 +73,7 @@ const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: 0,
+          borderRadius: 4,
           backgroundImage: 'none'
         }
       }

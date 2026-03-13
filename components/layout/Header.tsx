@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import CallRoundedIcon from '@mui/icons-material/CallRounded';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
@@ -67,13 +68,15 @@ export default function Header() {
       {/* MAIN NAVIGATION BAR */}
       <Container maxWidth="lg">
         <Toolbar disableGutters sx={{ minHeight: 78, justifyContent: 'space-between' }}>
-          <Box>
-            <Typography variant="h5" fontWeight={800} color="primary.main">
-              Dar Al Falah
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Sanitary ware, tiles & building materials
-            </Typography>
+          <Box component={Link} href="/" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <Image
+              src="/logo.png"
+              alt="Dar Al Falah Logo"
+              width={220}
+              height={70}
+              style={{ objectFit: 'contain' }}
+              priority
+            />
           </Box>
 
           <Stack direction="row" spacing={1.5} alignItems="center" sx={{ display: { xs: 'none', md: 'flex' } }}>
@@ -95,9 +98,15 @@ export default function Header() {
 
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
         <Stack sx={{ width: 280, p: 3 }} spacing={2}>
-          <Typography variant="h6" fontWeight={800} color="primary.main">
-            Dar Al Falah
-          </Typography>
+          <Box component={Link} href="/" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', mb: 2 }} onClick={() => setOpen(false)}>
+            <Image
+              src="/logo.png"
+              alt="Dar Al Falah Logo"
+              width={180}
+              height={60}
+              style={{ objectFit: 'contain' }}
+            />
+          </Box>
           {navItems.map((item) => (
             <Button
               key={item.href}
