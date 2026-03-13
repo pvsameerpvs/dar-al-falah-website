@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import ThemeRegistry from '@/components/providers/ThemeRegistry';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import FloatingWhatsApp from '@/components/layout/FloatingWhatsApp';
 import { siteConfig } from '@/data/site';
 import './globals.css';
 
@@ -41,6 +42,7 @@ export default function RootLayout({
               <Header />
               <main>{children}</main>
               <Footer />
+              <FloatingWhatsApp />
             </Box>
           </ThemeRegistry>
         </AppRouterCacheProvider>

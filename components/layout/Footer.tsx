@@ -67,7 +67,7 @@ export default function Footer() {
             <Stack spacing={2.2}>
               <Box sx={{ mb: 1 }}>
                 <Image
-                  src="/logo-1.png"
+                  src="/logo-2.png"
                   alt="Dar Al Falah Logo"
                   width={200}
                   height={80}
