@@ -36,11 +36,9 @@ export default function HeroSection() {
       sx={{
         position: 'relative',
         width: '100%',
-        height: { xs: 'auto', md: '100vh' },
-        minHeight: { xs: '100vh', md: 'auto' },
+        height: { xs: '100svh', md: '100vh' },
         overflow: 'hidden',
         backgroundColor: '#FAFAFA',
-        pt: { xs: 12, md: 0 },
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center'
@@ -135,37 +133,11 @@ export default function HeroSection() {
         </Box>
       </Box>
 
-      {/* LEFT SIDE IMAGE */}
-      <Box
-        sx={{
-          position: 'absolute',
-          left: 0,
-          bottom: { xs: 'auto', md: 0 },
-          top: { xs: 20, md: 'auto' },
-          width: { xs: '280px', md: '850px' },
-          height: { xs: '280px', md: '750px' },
-          opacity: { xs: 0.15, md: 1 },
-          zIndex: 1,
-          pointerEvents: 'none'
-        }}
-      >
-        <Box
-          component="img"
-          src="/hero-cut.png"
-          alt="Dar Al Falah Building Material"
-          sx={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain',
-            objectPosition: 'bottom left',
-            opacity: 0.95
-          }}
-        />
-      </Box>
+      {/* LEFT SIDE IMAGE - Moved down to ensure proper document flow on mobile */}
 
       {/* MAIN CONTENT CENTER */}
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 3, flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', pb: { xs: 8, md: 0 } }}>
-        <Stack alignItems="center" textAlign="center" spacing={3} sx={{ width: '100%' }}>
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 3, flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', mt: { xs: -14, sm: -8, md: 0 } }}>
+        <Stack alignItems="center" textAlign="center" spacing={{ xs: 2, md: 3 }} sx={{ width: '100%' }}>
           
           {/* Top Pill */}
           <Box
@@ -205,12 +177,12 @@ export default function HeroSection() {
             variant="h1"
             sx={{
               fontWeight: 400,
-              fontSize: { xs: '3.5rem', sm: '4.5rem', md: '6rem' },
+              fontSize: { xs: '2.8rem', sm: '4.5rem', md: '6rem' },
               lineHeight: 1,
               color: '#111827',
               maxWidth: 900,
               textTransform: 'uppercase',
-              letterSpacing: '0.04em',
+              letterSpacing: { xs: '0.02em', md: '0.04em' },
               fontFamily: 'var(--font-bebas-neue), system-ui, sans-serif'
             }}
           >
@@ -240,7 +212,7 @@ export default function HeroSection() {
             alignItems="center"
             justifyContent="center"
             spacing={{ xs: 2.5, sm: 4 }}
-            sx={{ mt: 1 }}
+            sx={{ mt: { xs: 2, md: 1 } }}
           >
             <Stack direction="row" alignItems="center" spacing={1.5}>
               <Box sx={{ color: '#E53935', display: 'flex' }}>
@@ -255,17 +227,19 @@ export default function HeroSection() {
               component={Link}
               href="/contact"
               variant="contained"
-              color="primary"
               endIcon={<ArrowForwardRoundedIcon />}
               sx={{
+                bgcolor: '#E53935',
+                color: '#fff',
                 borderRadius: 8,
-                px: 4,
+                px: { xs: 5, md: 4 },
                 py: { xs: 1.5, md: 1.8 },
                 fontWeight: 700,
                 fontSize: { xs: '0.95rem', md: '1.05rem' },
                 textTransform: 'none',
                 boxShadow: '0 8px 20px rgba(229,57,53,0.25)',
                 '&:hover': {
+                  bgcolor: '#C62828',
                   boxShadow: '0 10px 25px rgba(229,57,53,0.4)',
                   transform: 'translateY(-2px)'
                 },
@@ -278,32 +252,76 @@ export default function HeroSection() {
         </Stack>
       </Container>
 
+      {/* LEFT SIDE IMAGE (Mobile Flow & Desktop Absolute) */}
+      <Box
+        sx={{
+          position: 'absolute',
+          left: 0,
+          bottom: { xs: '70px', sm: '80px', md: 0 },
+          width: { xs: '100%', sm: '100%', md: '850px' },
+          height: { xs: '45vh', sm: '50vh', md: '750px' },
+          maxHeight: { xs: '320px', sm: '450px', md: '100%' },
+          opacity: 1,
+          zIndex: 1,
+          pointerEvents: 'none',
+          display: 'flex',
+          justifyContent: 'center'
+        }}
+      >
+        <Box
+          component="img"
+          src="/hero-cut.png"
+          alt="Dar Al Falah Building Material"
+          sx={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+            objectPosition: { xs: 'bottom center', md: 'bottom left' },
+            opacity: 0.95
+          }}
+        />
+      </Box>
+
       {/* BOTTOM LOGO/CATEGORY BAR */}
-      <Box sx={{ bgcolor: '#111827', py: { xs: 3, md: 4 }, borderTop: '4px solid #E53935', position: 'absolute', bottom: 0, width: '100%', zIndex: 4 }}>
-        <Container maxWidth="xl">
+      <Box sx={{ bgcolor: '#111827', py: { xs: 1.5, sm: 2, md: 4 }, borderTop: '4px solid #E53935', position: 'absolute', bottom: 0, width: '100%', zIndex: 4, overflow: 'hidden' }}>
+        <Container maxWidth="xl" sx={{ px: { xs: 0, sm: 2, md: 3 } }}>
           <Stack
             direction="row"
-            flexWrap="wrap"
-            justifyContent={{ xs: 'center', md: 'space-evenly' }}
+            flexWrap={{ xs: 'nowrap', md: 'wrap' }}
+            justifyContent={{ xs: 'flex-start', md: 'space-evenly' }}
             alignItems="center"
-            gap={{ xs: 4, md: 6 }}
+            columnGap={{ xs: 3, sm: 4, md: 6 }}
+            rowGap={{ xs: 1, md: 6 }}
+            sx={{
+              width: { xs: 'max-content', md: '100%' },
+              animation: { xs: 'scrollMarquee 20s linear infinite', md: 'none' },
+              '&:hover': {
+                animationPlayState: { xs: 'paused', md: 'running' }
+              },
+              pb: { xs: 0.5, md: 0 },
+              pl: { xs: 3, md: 0 } // Offset left margin to match the gap gap
+            }}
           >
-            {categories.map((category) => {
+            {/* Duplicate categories just for the seamless scroll loop on mobile */}
+            {[...categories, ...categories].map((category, index) => {
               const Icon = category.icon;
+              const isDuplicate = index >= categories.length;
               return (
                 <Stack
-                  key={category.title}
+                  key={`${category.title}-${index}`}
                   direction="row"
                   alignItems="center"
-                  spacing={1.2}
+                  spacing={1}
                   sx={{
+                    display: { xs: 'flex', md: isDuplicate ? 'none' : 'flex' },
                     opacity: 0.85,
                     transition: 'opacity 0.2s',
+                    flexShrink: 0,
                     '&:hover': { opacity: 1 }
                   }}
                 >
-                  <Icon sx={{ color: '#fff', fontSize: 26 }} />
-                  <Typography sx={{ color: '#fff', fontWeight: 600, fontSize: '1rem', letterSpacing: '0.04em' }}>
+                  <Icon sx={{ color: '#fff', fontSize: { xs: 20, md: 26 } }} />
+                  <Typography sx={{ color: '#fff', fontWeight: 600, fontSize: { xs: '0.85rem', md: '1rem' }, letterSpacing: '0.04em', whiteSpace: 'nowrap' }}>
                     {category.title}
                   </Typography>
                 </Stack>
@@ -318,6 +336,10 @@ export default function HeroSection() {
           0% { transform: scale(1); }
           50% { transform: scale(1.1); }
           100% { transform: scale(1); }
+        }
+        @keyframes scrollMarquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(calc(-50% - 12px)); } /* accounting for the 3 unit gap */
         }
       `}</style>
     </Box>

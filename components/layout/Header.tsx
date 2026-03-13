@@ -38,31 +38,34 @@ export default function Header() {
         backgroundColor: 'rgba(248, 251, 255, 0.92)'
       }}
     >
+      {/* TOP STATUS BAR */}
       <Box sx={{ borderBottom: '1px solid rgba(81, 112, 138, 0.08)' }}>
         <Container maxWidth="lg">
           <Stack
             direction={{ xs: 'column', md: 'row' }}
             spacing={1}
             justifyContent="space-between"
-            alignItems={{ xs: 'flex-start', md: 'center' }}
+            alignItems={{ xs: 'center', md: 'center' }}
             py={1}
           >
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" sx={{ display: { xs: 'none', md: 'block' } }}>
               {siteConfig.tagline}
             </Typography>
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} color="text.secondary">
+            <Stack direction={{ xs: 'row', sm: 'row' }} spacing={2} color="text.secondary" width={{ xs: '100%', md: 'auto' }} justifyContent={{ xs: 'space-between', md: 'flex-end' }}>
               <Stack direction="row" spacing={1} alignItems="center">
-                <CallRoundedIcon fontSize="small" />
-                <Typography variant="body2">{siteConfig.phones[0]}</Typography>
+                <CallRoundedIcon fontSize="small" sx={{ color: 'primary.main' }} />
+                <Typography variant="body2" fontWeight={600}>{siteConfig.phones[0]}</Typography>
               </Stack>
               <Stack direction="row" spacing={1} alignItems="center">
-                <EmailRoundedIcon fontSize="small" />
-                <Typography variant="body2">{siteConfig.email[0]}</Typography>
+                <EmailRoundedIcon fontSize="small" sx={{ color: 'primary.main' }} />
+                <Typography variant="body2" fontWeight={600}>{siteConfig.email[0]}</Typography>
               </Stack>
             </Stack>
           </Stack>
         </Container>
       </Box>
+
+      {/* MAIN NAVIGATION BAR */}
       <Container maxWidth="lg">
         <Toolbar disableGutters sx={{ minHeight: 78, justifyContent: 'space-between' }}>
           <Box>
