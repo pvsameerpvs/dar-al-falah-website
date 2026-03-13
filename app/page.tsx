@@ -1,7 +1,9 @@
 import HeroSection from '@/components/home/HeroSection';
-import HomeInquiryBanner from '@/components/home/HomeInquiryBanner';
-import Highlights from '@/components/home/Highlights';
+import ProductCategoryShowcase from '@/components/home/ProductCategoryShowcase';
 import AboutSection from '@/components/home/AboutSection';
+import Highlights from '@/components/home/Highlights';
+import HomeInquiryBanner from '@/components/home/HomeInquiryBanner';
+import WashBasinShowcase from '@/components/home/WashBasinShowcase';
 
 export default function HomePage() {
   return (
@@ -9,6 +11,8 @@ export default function HomePage() {
       <HeroSection />
       <AboutSection />
       <Highlights />
+      <ProductCategoryShowcase />
+      <WashBasinShowcase />
       <HomeInquiryBanner />
     </>
   );
