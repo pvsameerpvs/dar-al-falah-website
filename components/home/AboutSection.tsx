@@ -1,62 +1,103 @@
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import SectionHeading from '@/components/shared/SectionHeading';
 
-const stats = [
-  { label: 'Product categories', value: '5 core groups' },
-  { label: 'Clients served', value: '350+ yearly' },
-  { label: 'Response time', value: 'Under 24 hrs' }
-];
+
 
 export default function AboutSection() {
   return (
-    <Box className="relative" sx={{ py: { xs: 6, md: 9 } }}>
-      <Container maxWidth="lg">
-        <Grid container spacing={4} alignItems="stretch">
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Card sx={{ p: { xs: 3, md: 4 }, borderRadius: 6, height: '100%' }}>
+    <Box
+      className="relative"
+      sx={{
+        py: { xs: 4, md: 0 },
+        overflow: 'hidden',
+        minHeight: '100vh',
+        backgroundColor: '#fff'
+      }}
+    >
+      <Container
+        disableGutters
+        maxWidth={false}
+        sx={{
+          position: 'relative',
+          zIndex: 1,
+          display: 'flex',
+          alignItems: 'center',
+          minHeight: '100%'
+        }}
+      >
+        <Grid
+          container
+          spacing={{ xs: 0, md: 4 }}
+          alignItems="stretch"
+          sx={{ minHeight: { md: '100vh' }, width: '100%', m: 0 }}
+        >
+          <Grid
+            size={{ xs: 12, md: 6 }}
+            sx={{
+              order: { xs: 1, md: 2 },
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              px: { xs: 3, md: 6 }
+            }}
+          >
+            <Box
+              sx={{
+                width: '100%',
+                maxWidth: 620,
+                p: { xs: 3, md: 5 },
+                backgroundColor: '#fff',
+                
+              }}
+            >
+              <Box
+                sx={{
+                  width: 64,
+                  height: 6,
+                  borderRadius: 999,
+                  backgroundColor: 'primary.main',
+                  mb: 3
+                }}
+              />
               <SectionHeading
                 eyebrow="About Dar Al Falah"
                 title="A responsive building materials partner rooted in Muscat"
                 description="The company pairs a stocked showroom with fast procurement work, giving contractors and facilities teams a single point of contact for HVAC, piping, electrical, and finishing materials."
               />
-              <Typography color="text.secondary" sx={{ fontSize: '1.02rem' }}>
+              <Typography color="text.secondary" sx={{ fontSize: '1.05rem', lineHeight: 1.75 }}>
                 This site highlights the breadth of available inventory, the professionalism of the team, and the
                 ease of initiating an order. The messaging is written for engineers, maintenance managers, and
                 procurement leads who value timely quotations and predictable follow through.
               </Typography>
-              <Stack spacing={2.5} mt={4} direction={{ xs: 'column', sm: 'row' }}>
-                {stats.map((item) => (
-                  <Stack key={item.label} spacing={0.5} flex={1}>
-                    <Typography variant="h5" component="p">
-                      {item.value}
-                    </Typography>
-                    <Typography color="text.secondary">{item.label}</Typography>
-                  </Stack>
-                ))}
-              </Stack>
-            </Card>
+              
+            </Box>
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Card sx={{ borderRadius: 6, height: '100%', overflow: 'hidden' }}>
-              <Box
-                component="img"
-                src="/about-bg.jpg"
-                alt="Dar Al Falah showroom"
-                sx={{
-                  width: '100%',
-                  height: { xs: 280, sm: 360, md: '100%' },
-                  minHeight: { md: 440 },
-                  objectFit: 'cover',
-                  objectPosition: { xs: 'center', md: 'center right' },
-                  display: 'block'
-                }}
-              />
-            </Card>
+          <Grid
+            size={{ xs: 12, md: 6 }}
+            sx={{
+              order: { xs: 2, md: 1 },
+              display: 'flex',
+              alignItems: 'stretch',
+              justifyContent: 'flex-start',
+              pl: { xs: 0, md: 0 },
+              pr: { xs: 0, md: 0 }
+            }}
+          >
+            <Box
+              sx={{
+                flex: 1,
+                width: '100%',
+                height: { xs: 300, sm: 360, md: '100vh' },
+                minHeight: { md: '100vh' },
+                backgroundImage: 'url(/about-bg.jpg)',
+                backgroundSize: 'cover',
+                backgroundPosition: { xs: 'center', md: 'center left' },
+                backgroundRepeat: 'no-repeat'
+              }}
+            />
           </Grid>
         </Grid>
       </Container>
