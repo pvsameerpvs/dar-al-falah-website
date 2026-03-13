@@ -47,7 +47,7 @@ export default function ContactDetailsSection() {
               {contactRows.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <Card key={item.title} sx={{ p: 3, borderRadius: 6 }}>
+                  <Card key={item.title} sx={{ p: 3, borderRadius: 0 }}>
                     <Stack direction="row" spacing={2} alignItems="flex-start">
                       <Box
                         sx={{
@@ -55,7 +55,7 @@ export default function ContactDetailsSection() {
                           height: 52,
                           display: 'grid',
                           placeItems: 'center',
-                          borderRadius: 4,
+                          borderRadius: 0,
                           backgroundColor: 'rgba(84,202,132,0.14)'
                         }}
                       >
@@ -74,7 +74,7 @@ export default function ContactDetailsSection() {
             </Stack>
           </Grid>
           <Grid size={{ xs: 12, md: 7 }}>
-            <Card sx={{ p: { xs: 3, md: 4 }, borderRadius: 6 }}>
+            <Card sx={{ p: { xs: 3, md: 4 }, borderRadius: 0 }}>
               <Stack spacing={2.2} component="form">
                 <Typography variant="h4">Request a Quote</Typography>
                 <Typography color="text.secondary">

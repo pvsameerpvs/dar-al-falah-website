@@ -18,7 +18,7 @@ export default function HomeInquiryBanner() {
           sx={{
             position: 'relative',
             p: { xs: 3, md: 5 },
-            borderRadius: { xs: 5, md: 7 },
+            borderRadius: 0,
             background: 'linear-gradient(135deg, #c62828 0%, #e53935 52%, #8e1b1b 100%)',
             border: '1px solid rgba(255,255,255,0.14)',
             boxShadow: '0 28px 70px rgba(164, 28, 28, 0.32)'
@@ -102,7 +102,7 @@ export default function HomeInquiryBanner() {
                   color: '#c62828',
                   px: 3.5,
                   py: 1.4,
-                  borderRadius: 999,
+                  borderRadius: 0,
                   fontWeight: 800,
                   boxShadow: '0 12px 30px rgba(0,0,0,0.18)',
                   '&:hover': {

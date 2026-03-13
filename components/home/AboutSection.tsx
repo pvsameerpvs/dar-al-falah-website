@@ -57,7 +57,7 @@ export default function AboutSection() {
                 sx={{
                   width: { xs: 48, md: 64 },
                   height: 6,
-                  borderRadius: 999,
+                  borderRadius: 0,
                   backgroundColor: 'primary.main',
                   mb: 3,
                   mx: { xs: 'auto', md: 'unset' }

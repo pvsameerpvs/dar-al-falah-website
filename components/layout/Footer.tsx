@@ -16,7 +16,6 @@ const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Products', href: '/products' },
-  { label: 'Services', href: '/services' },
   { label: 'Contact', href: '/contact' }
 ];
 
@@ -156,7 +155,7 @@ export default function Footer() {
                         sx={{
                           width: 38,
                           height: 38,
-                          borderRadius: 2.5,
+                          borderRadius: 0,
                           bgcolor: 'rgba(255,255,255,0.08)',
                           display: 'grid',
                           placeItems: 'center',

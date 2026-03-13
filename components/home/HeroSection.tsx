@@ -147,7 +147,7 @@ export default function HeroSection() {
               gap: 1.2,
               px: { xs: 2, md: 2.5 },
               py: { xs: 0.8, md: 1 },
-              borderRadius: 10,
+              borderRadius: 0,
               border: '1px solid #E5E7EB',
               bgcolor: '#ffffff',
               boxShadow: '0 2px 10px rgba(229,57,53,0.06)'
@@ -231,7 +231,7 @@ export default function HeroSection() {
               sx={{
                 bgcolor: '#E53935',
                 color: '#fff',
-                borderRadius: 8,
+                borderRadius: 0,
                 px: { xs: 5, md: 4 },
                 py: { xs: 1.5, md: 1.8 },
                 fontWeight: 700,
@@ -345,4 +345,3 @@ export default function HeroSection() {
     </Box>
   );
 }
-

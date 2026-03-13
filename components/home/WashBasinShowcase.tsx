@@ -83,7 +83,7 @@ export default function WashBasinShowcase() {
               <Box
                 sx={{
                   gridColumn: { xs: 'auto', sm: 'span 2' },
-                  borderRadius: 5,
+                  borderRadius: 0,
                   overflow: 'hidden',
                   minHeight: { xs: 240, md: 320 },
                   boxShadow: '0 22px 50px rgba(17,17,17,0.12)'
@@ -101,7 +101,7 @@ export default function WashBasinShowcase() {
                 <Box
                   key={image.src}
                   sx={{
-                    borderRadius: 5,
+                    borderRadius: 0,
                     overflow: 'hidden',
                     minHeight: { xs: 220, md: 250 },
                     boxShadow: '0 18px 40px rgba(17,17,17,0.1)'

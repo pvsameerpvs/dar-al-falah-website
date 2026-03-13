@@ -72,7 +72,7 @@ export default function ProductCategoryShowcase() {
               <Box
                 sx={{
                   position: 'relative',
-                  borderRadius: 4,
+                  borderRadius: 0,
                   overflow: 'hidden',
                   minHeight: { xs: 220, md: 320 },
                   backgroundImage: 'linear-gradient(120deg, rgba(229,57,53,0.55), rgba(5,5,5,0.65)), url(/hero1.jpg)',
@@ -119,7 +119,7 @@ export default function ProductCategoryShowcase() {
                     <Card
                       sx={{
                         height: '100%',
-                        borderRadius: 4,
+                        borderRadius: 0,
                         border: '1px solid rgba(229,57,53,0.18)',
                         borderTop: `4px solid ${accent}`,
                         boxShadow: '0 25px 60px rgba(15,15,15,0.08)',
@@ -133,7 +133,7 @@ export default function ProductCategoryShowcase() {
                         sx={{
                           width: 58,
                           height: 58,
-                          borderRadius: '40% 60% 35% 65%',
+                          borderRadius: 0,
                           background: 'linear-gradient(135deg, rgba(229,57,53,0.1), rgba(229,57,53,0.35))',
                           display: 'grid',
                           placeItems: 'center',

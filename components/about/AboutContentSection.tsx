@@ -28,7 +28,7 @@ export default function AboutContentSection() {
       <Container maxWidth="lg">
         <Grid container spacing={3.5}>
           <Grid size={{ xs: 12, md: 7 }}>
-            <Card sx={{ p: { xs: 3, md: 4 }, borderRadius: 6, height: '100%' }}>
+            <Card sx={{ p: { xs: 3, md: 4 }, borderRadius: 0, height: '100%' }}>
               <SectionHeading
                 eyebrow="Company overview"
                 title="A strong website helps buyers understand what you sell and how to reach you."
@@ -45,7 +45,7 @@ export default function AboutContentSection() {
           <Grid size={{ xs: 12, md: 5 }}>
             <Stack spacing={2.5}>
               {values.map((item) => (
-                <Card key={item.title} sx={{ p: 3, borderRadius: 6 }}>
+                <Card key={item.title} sx={{ p: 3, borderRadius: 0 }}>
                   <Typography variant="h6" mb={1}>
                     {item.title}
                   </Typography>

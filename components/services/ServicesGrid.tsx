@@ -21,7 +21,7 @@ export default function ServicesGrid() {
             const Icon = item.icon;
             return (
               <Grid key={item.title} size={{ xs: 12, md: 6 }}>
-                <Card sx={{ p: { xs: 3, md: 4 }, borderRadius: 6, height: '100%' }}>
+                <Card sx={{ p: { xs: 3, md: 4 }, borderRadius: 0, height: '100%' }}>
                   <Stack spacing={2}>
                     <Box
                       sx={{
@@ -29,7 +29,7 @@ export default function ServicesGrid() {
                         height: 60,
                         display: 'grid',
                         placeItems: 'center',
-                        borderRadius: 4,
+                        borderRadius: 0,
                         backgroundColor: 'rgba(242,166,90,0.14)'
                       }}
                     >
