@@ -11,7 +11,7 @@ export default function AboutSection() {
     <Box
       className="relative"
       sx={{
-        py: { xs: 4, md: 0 },
+        py: { xs: 2, md: 0 },
         overflow: 'hidden',
         minHeight: '100vh',
         backgroundColor: '#fff'
@@ -37,7 +37,7 @@ export default function AboutSection() {
           <Grid
             size={{ xs: 12, md: 6 }}
             sx={{
-              order: { xs: 1, md: 2 },
+              order: { xs: 2, md: 2 },
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -48,37 +48,48 @@ export default function AboutSection() {
               sx={{
                 width: '100%',
                 maxWidth: 620,
-                p: { xs: 3, md: 5 },
+                p: { xs: 2.5, md: 5 },
                 backgroundColor: '#fff',
-                
+               
               }}
             >
               <Box
                 sx={{
-                  width: 64,
+                  width: { xs: 48, md: 64 },
                   height: 6,
                   borderRadius: 999,
                   backgroundColor: 'primary.main',
-                  mb: 3
+                  mb: 3,
+                  mx: { xs: 'auto', md: 'unset' }
                 }}
               />
-              <SectionHeading
-                eyebrow="About Dar Al Falah"
-                title="A responsive building materials partner rooted in Muscat"
-                description="The company pairs a stocked showroom with fast procurement work, giving contractors and facilities teams a single point of contact for HVAC, piping, electrical, and finishing materials."
-              />
-              <Typography color="text.secondary" sx={{ fontSize: '1.05rem', lineHeight: 1.75 }}>
+              <Box
+                sx={{
+                  textAlign: { xs: 'center', md: 'left' },
+                  '& .MuiChip-root': { mx: { xs: 'auto', md: 'unset' } }
+                }}
+              >
+                <SectionHeading
+                  eyebrow="About Dar Al Falah"
+                  title="A responsive building materials partner rooted in Muscat"
+                  description="The company pairs a stocked showroom with fast procurement work, giving contractors and facilities teams a single point of contact for HVAC, piping, electrical, and finishing materials."
+                />
+              </Box>
+              <Typography
+                color="text.secondary"
+                sx={{ fontSize: { xs: '0.98rem', md: '1.05rem' }, lineHeight: { xs: 1.6, md: 1.75 }, textAlign: { xs: 'center', md: 'left' } }}
+              >
                 This site highlights the breadth of available inventory, the professionalism of the team, and the
                 ease of initiating an order. The messaging is written for engineers, maintenance managers, and
                 procurement leads who value timely quotations and predictable follow through.
               </Typography>
-              
+             
             </Box>
           </Grid>
           <Grid
             size={{ xs: 12, md: 6 }}
             sx={{
-              order: { xs: 2, md: 1 },
+              order: { xs: 1, md: 1 },
               display: 'flex',
               alignItems: 'stretch',
               justifyContent: 'flex-start',
