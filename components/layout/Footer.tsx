@@ -65,13 +65,27 @@ export default function Footer() {
         <Grid container spacing={{ xs: 4, md: 5 }}>
           <Grid size={{ xs: 12, md: 4.5 }}>
             <Stack spacing={2.2}>
-              <Box sx={{ mb: 1 }}>
+              <Box
+                sx={{
+                  mb: 1,
+                  width: { xs: 110, sm: 124 },
+                  height: { xs: 110, sm: 124 },
+                  p: 1.75,
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 3,
+                  backgroundColor: '#fff',
+                  border: '1px solid rgba(255,255,255,0.9)',
+                  boxShadow: '0 14px 32px rgba(0,0,0,0.18)'
+                }}
+              >
                 <Image
-                  src="/logo-2.png"
+                  src="/loooogo.png"
                   alt="Dar Al Falah Logo"
-                  width={200}
-                  height={80}
-                  style={{ objectFit: 'contain' }}
+                  width={96}
+                  height={96}
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
                 />
               </Box>
               <Typography
