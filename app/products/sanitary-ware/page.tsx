@@ -1,8 +1,6 @@
-'use client';
-
-import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -26,6 +24,17 @@ const slugify = (value: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
+const groupedCatalog = (() => {
+  const grouped = new Map<string, (typeof sanitaryCatalog)[number]['subsections']>();
+
+  sanitaryCatalog.forEach((group) => {
+    const existing = grouped.get(group.heading) ?? [];
+    grouped.set(group.heading, [...existing, ...group.subsections]);
+  });
+
+  return Array.from(grouped.entries()).map(([heading, subsections]) => ({ heading, subsections }));
+})();
+
 const getWhatsAppBaseUrl = () => {
   const phoneDigits = siteConfig.phones[0].replace(/\D/g, '');
   return `https://wa.me/971${phoneDigits.slice(-9)}`;
@@ -38,19 +47,16 @@ const getInquiryUrl = (heading: string, subheading: string) => {
   return `${getWhatsAppBaseUrl()}?text=${message}`;
 };
 
-export default function SanitaryWarePage() {
-  const groupedCatalog = useMemo(() => {
-    const grouped = new Map<string, typeof sanitaryCatalog[number]['subsections']>();
+type SanitaryPageProps = {
+  searchParams?: Promise<{
+    tab?: string;
+  }>;
+};
 
-    sanitaryCatalog.forEach((group) => {
-      const existing = grouped.get(group.heading) ?? [];
-      grouped.set(group.heading, [...existing, ...group.subsections]);
-    });
-
-    return Array.from(grouped.entries()).map(([heading, subsections]) => ({ heading, subsections }));
-  }, []);
-
-  const [activeTab, setActiveTab] = useState('all');
+export default async function SanitaryWarePage({ searchParams }: SanitaryPageProps) {
+  const params = searchParams ? await searchParams : undefined;
+  const currentTab = params?.tab;
+  const activeTab = currentTab && groupedCatalog.some((group) => slugify(group.heading) === currentTab) ? currentTab : 'all';
 
   const visibleGroups =
     activeTab === 'all' ? groupedCatalog : groupedCatalog.filter((group) => slugify(group.heading) === activeTab);
@@ -125,9 +131,9 @@ export default function SanitaryWarePage() {
             >
               <Tabs
                 value={activeTab}
-                onChange={(_, value) => setActiveTab(value)}
                 variant="scrollable"
                 scrollButtons="auto"
+                allowScrollButtonsMobile
                 sx={{
                   minHeight: 54,
                   '.MuiTabs-indicator': { backgroundColor: accent, height: 3 },
@@ -144,14 +150,26 @@ export default function SanitaryWarePage() {
                   }
                 }}
               >
-                <Tab value="all" label={`All Products (${sanitaryProductCount})`} />
-                {groupedCatalog.map((group) => (
-                  <Tab
-                    key={group.heading}
-                    value={slugify(group.heading)}
-                    label={`${group.heading} (${group.subsections.length})`}
-                  />
-                ))}
+                <Tab
+                  component={Link}
+                  href="/products/sanitary-ware"
+                  scroll={false}
+                  value="all"
+                  label={`All Products (${sanitaryProductCount})`}
+                />
+                {groupedCatalog.map((group) => {
+                  const tabValue = slugify(group.heading);
+                  return (
+                    <Tab
+                      key={group.heading}
+                      component={Link}
+                      href={`/products/sanitary-ware?tab=${tabValue}`}
+                      scroll={false}
+                      value={tabValue}
+                      label={`${group.heading} (${group.subsections.length})`}
+                    />
+                  );
+                })}
               </Tabs>
             </Box>
           </Stack>
@@ -224,18 +242,6 @@ export default function SanitaryWarePage() {
                             background: 'linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.58))'
                           }}
                         />
-                        <Chip
-                          label={`Image: ${slugify(item.subheading)}.jpg`}
-                          size="small"
-                          sx={{
-                            position: 'absolute',
-                            left: 12,
-                            top: 12,
-                            fontWeight: 700,
-                            bgcolor: 'rgba(255,255,255,0.92)',
-                            color: '#111'
-                          }}
-                        />
                       </Box>
 
                       <CardContent sx={{ p: 2.2, display: 'flex', flexDirection: 'column', gap: 1.5, flexGrow: 1 }}>
@@ -279,14 +285,21 @@ export default function SanitaryWarePage() {
                             href={getInquiryUrl(group.heading, item.subheading)}
                             target="_blank"
                             rel="noopener noreferrer"
-                            variant="outlined"
+                            variant="contained"
+                            startIcon={<WhatsAppIcon sx={{ fontSize: 20 }} />}
                             sx={{
-                              borderColor: 'rgba(229,57,53,0.48)',
-                              color: accent,
+                              bgcolor: '#25D366',
+                              color: '#fff',
                               fontWeight: 700,
+                              textTransform: 'none',
+                              borderRadius: 2,
+                              boxShadow: '0 10px 22px rgba(37,211,102,0.34)',
+                              '&:active': {
+                                transform: 'translateY(1px)'
+                              },
                               '&:hover': {
-                                borderColor: accent,
-                                bgcolor: 'rgba(229,57,53,0.05)'
+                                bgcolor: '#1ebe5d',
+                                boxShadow: '0 14px 28px rgba(37,211,102,0.42)'
                               }
                             }}
                           >
