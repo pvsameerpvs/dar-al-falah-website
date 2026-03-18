@@ -38,6 +38,15 @@ export default function ProductCategoryGrid() {
     setSelectedCategory(null);
   };
 
+  const handleCategoryAction = (category: Category) => {
+    if (category.href) {
+      window.location.assign(category.href);
+      return;
+    }
+
+    handleOpen(category);
+  };
+
   const openWhatsApp = () => {
     if (!selectedCategory) return;
     const phone = siteConfig.phones[0].replace(/\D/g, ''); // Extract numbers from the first phone number
@@ -77,7 +86,7 @@ export default function ProductCategoryGrid() {
                   <Box
                     component="button"
                     type="button"
-                    onClick={() => handleOpen(category)}
+                    onClick={() => handleCategoryAction(category)}
                     sx={{
                       height: '100%',
                       width: '100%',

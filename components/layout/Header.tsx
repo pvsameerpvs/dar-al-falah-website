@@ -21,7 +21,7 @@ const navItems = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
-  { label: 'Products', href: '/products' },
+  { label: 'Products', href: '/products/sanitary-ware' },
   { label: 'Contact', href: '/contact' }
 ];
 
@@ -81,11 +81,19 @@ export default function Header() {
           </Box>
 
           <Stack direction="row" spacing={1.5} alignItems="center" sx={{ display: { xs: 'none', md: 'flex' } }}>
-            {navItems.map((item) => (
-              <Button key={item.href} component={Link} href={item.href} color="inherit">
-                {item.label}
-              </Button>
-            ))}
+            {navItems.map((item) => {
+              const isProducts = item.href === '/products/sanitary-ware';
+              return (
+                <Button
+                  key={item.href}
+                  component={isProducts ? 'a' : Link}
+                  href={item.href}
+                  color="inherit"
+                >
+                  {item.label}
+                </Button>
+              );
+            })}
             <Button component={Link} href="/contact" variant="contained" color="primary">
               Get a Quote
             </Button>
@@ -108,18 +116,21 @@ export default function Header() {
               style={{ objectFit: 'contain' }}
             />
           </Box>
-          {navItems.map((item) => (
-            <Button
-              key={item.href}
-              component={Link}
-              href={item.href}
-              color="inherit"
-              sx={{ justifyContent: 'flex-start' }}
-              onClick={() => setOpen(false)}
-            >
-              {item.label}
-            </Button>
-          ))}
+          {navItems.map((item) => {
+            const isProducts = item.href === '/products/sanitary-ware';
+            return (
+              <Button
+                key={item.href}
+                component={isProducts ? 'a' : Link}
+                href={item.href}
+                color="inherit"
+                sx={{ justifyContent: 'flex-start' }}
+                onClick={() => setOpen(false)}
+              >
+                {item.label}
+              </Button>
+            );
+          })}
           <Button component={Link} href="/contact" variant="contained" onClick={() => setOpen(false)}>
             Contact Us
           </Button>

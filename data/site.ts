@@ -15,6 +15,7 @@ export type Category = {
   icon: SvgIconComponent;
   image: string;
   details: string;
+  href?: string;
 };
 
 export type Service = {
@@ -41,7 +42,8 @@ export const categories: Category[] = [
     description: 'Modern, durable fittings and essentials selected for functionality, hygiene, and everyday use.',
     icon: SanitizerRoundedIcon,
     image: '/sanitary-ware.png',
-    details: 'Our sanitary ware collection includes everything from modern bathroom sinks and elegant faucets to luxury bathtubs and shower sets. We provide high-quality, durable components designed to enhance both the aesthetics and functionality of your space.'
+    details: 'Our sanitary ware collection includes everything from modern bathroom sinks and elegant faucets to luxury bathtubs and shower sets. We provide high-quality, durable components designed to enhance both the aesthetics and functionality of your space.',
+    href: '/products/sanitary-ware'
   },
   {
     title: 'Ceramic Tiles',
